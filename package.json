@@ -5,6 +5,7 @@
   "author": "Deyvis17GY",
   "license": "MIT",
   "repository": "https://github.com/Deyvis17GY/atom-img.git",
+  "homepage": "https://deyvis17gy.github.io/atom-img/",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
