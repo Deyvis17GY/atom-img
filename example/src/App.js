@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { Picture } from '@deyvis/atom-img'
-import '@deyvis/atom-img/dist/index.css'
+import { Picture } from '@deyvis17gy/atom-img'
+import '@deyvis17gy/atom-img/dist/index.css'
 
 const App = () => {
   return (

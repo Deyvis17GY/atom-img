@@ -1,5 +1,5 @@
 {
-  "name": "@deyvis/atom-img-example",
+  "name": "@deyvis17gy/atom-img-example",
   "homepage": ".",
   "version": "0.0.0",
   "private": true,
@@ -10,7 +10,7 @@
     "eject": "node ../node_modules/react-scripts/bin/react-scripts.js eject"
   },
   "dependencies": {
-    "@deyvis/atom-img": "link:..",
+    "@deyvis17gy/atom-img": "link:..",
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
     "react-scripts": "link:../node_modules/react-scripts",

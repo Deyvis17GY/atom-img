@@ -1,13 +1,13 @@
-# @deyvis/atom-img
+# @deyvis17gy/atom-img
 
 > Loader img to loading api
 
-[![NPM](https://img.shields.io/npm/v/@deyvis/atom-img.svg)](https://www.npmjs.com/package/@deyvis/atom-img) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/@deyvis17gy/atom-img.svg)](https://www.npmjs.com/package/@deyvis17gy/atom-img) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install --save @deyvis/atom-img
+npm install --save @deyvis17gy/atom-img
 ```
 
 ## Usage
@@ -16,7 +16,7 @@ npm install --save @deyvis/atom-img
 import React from 'react'
 
 import { Picture } from '@deyvis/atom-img'
-import '@deyvis/atom-img/dist/index.css'
+import '@deyvis17gy/atom-img/dist/index.css'
 
 const App = () => {
   return (
