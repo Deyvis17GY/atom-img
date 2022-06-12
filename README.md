@@ -13,15 +13,17 @@ npm install --save @deyvis/atom-img
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import React from 'react'
 
-import MyComponent from '@deyvis/atom-img'
+import { Picture } from '@deyvis/atom-img'
 import '@deyvis/atom-img/dist/index.css'
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+const App = () => {
+  return (
+    <>
+      <Picture classPicture='picture' alt='image' url='example.jpg' />
+    </>
+  )
 }
 ```
 
