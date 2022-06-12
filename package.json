@@ -1,7 +1,7 @@
 {
   "name": "@deyvis17gy/atom-img",
-  "version": "1.0.1",
-  "description": "Loader img to loading api",
+  "version": "1.0.21",
+  "description": "preload to load slow red images or large images",
   "author": "Deyvis17GY",
   "license": "MIT",
   "repository": "https://github.com/Deyvis17GY/atom-img.git",
