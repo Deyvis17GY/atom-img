@@ -20,7 +20,7 @@
     }
 
     &__loaded {
-        background: transparent url('Spinning.gif') center/contain no-repeat;
+        background: transparent;
         width: 100%;
         min-width: 50px;
         position: absolute;
@@ -29,6 +29,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        overflow: hidden;
     }
 
     &__icon {

@@ -13,6 +13,7 @@ export const Picture = ({
   classPicture,
   isBorderRadius,
   alt,
+  loaderUrl,
   clickProfile
 }) => {
   const [loaded, setLoaded] = useState(false)
@@ -52,7 +53,11 @@ export const Picture = ({
         ) : (
           <UserOutlined className='a-picture__icon' />
         )}
-        {!loaded && url && <div className='a-picture__loaded' />}
+        {!loaded && url && (
+          <div className='a-picture__loaded'>
+            <img src={loaderUrl} alt={alt} />
+          </div>
+        )}
       </figure>
     </>
   )
