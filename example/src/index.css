@@ -14,8 +14,8 @@ code {
 }
 
 .picture {
-  width: 450px;
-  height: 550px;
+  width: 90%;
+  height: auto;
   margin: 0;
   padding: 10px;
   display: flex;
@@ -23,4 +23,6 @@ code {
   align-items: flex-start;
   z-index: 1;
   position: relative;
+  border-radius: 100px;
+  order: 2;
 }
