@@ -1,6 +1,6 @@
 # @deyvis17gy/atom-img
 
-> Loader img to loading api
+> image preloading for slow or large connections
 
 [![NPM](https://img.shields.io/npm/v/@deyvis17gy/atom-img.svg)](https://www.npmjs.com/package/@deyvis17gy/atom-img) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
