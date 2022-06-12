@@ -5,7 +5,6 @@ import React, {
   useState,
   Fragment
 } from 'react'
-import { UserOutlined } from '@ant-design/icons'
 import './picture.scss'
 
 export const Picture = ({
@@ -14,7 +13,8 @@ export const Picture = ({
   isBorderRadius,
   alt,
   loaderUrl,
-  clickProfile
+  clickProfile,
+  children
 }) => {
   const [loaded, setLoaded] = useState(false)
   const [className, setClassName] = useState('hidden')
@@ -51,7 +51,7 @@ export const Picture = ({
             alt={alt}
           />
         ) : (
-          <UserOutlined className='a-picture__icon' />
+          { children }
         )}
         {!loaded && url && (
           <div className='a-picture__loaded'>
