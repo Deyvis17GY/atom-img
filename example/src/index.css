@@ -15,14 +15,15 @@ code {
 
 .picture {
   width: 90%;
-  height: auto;
-  margin: 0;
+  height: 90%;
+  object-fit: contain;
+  margin: 0 10px;
   padding: 10px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   z-index: 1;
   position: relative;
-  border-radius: 100px;
   order: 2;
+  border: 1px solid red;
 }

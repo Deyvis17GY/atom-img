@@ -6,6 +6,7 @@ import loader from './assets/img/Spinning.gif'
 import './picture.scss'
 
 const App = () => {
+  const defaultUrl = 'https://picsum.photos/600/400'
   const [valuesProps, setValuesProps] = useState({
     url: 'https://images5.alphacoders.com/958/thumb-1920-958580.jpg',
     isBorderRadius: false,
@@ -24,7 +25,7 @@ const App = () => {
   }
   return (
     <main className='container'>
-      <Picture classPicture="picture" url={valuesProps.url} alt={valuesProps.alt} loaderUrl={valuesProps.loaderUrl || loader} isBorderRadius={valuesProps.isBorderRadius} />
+      <Picture classPicture="picture" url={valuesProps.url || defaultUrl} alt={valuesProps.alt} loaderUrl={valuesProps.loaderUrl || loader} isBorderRadius={valuesProps.isBorderRadius} />
       <form className='container__form'>
         <section className='container__group'>
           <label htmlFor="preLoader" className='container__label'>Preloader</label>
