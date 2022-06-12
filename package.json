@@ -12,8 +12,8 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "microbundle-crl --no-compress --no-css-modules --format modern",
-    "start": "microbundle-crl watch --no-compress --no-css-modules --format modern",
+    "build": "microbundle-crl --no-compress --no-css-modules --format modern,cjs",
+    "start": "microbundle-crl watch --no-compress --no-css-modules --format modern,cjs",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
     "test:build": "run-s build",
@@ -24,7 +24,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^16.0.0 || ^17 || ^18"
   },
   "devDependencies": {
     "@ant-design/icons": "^4.7.0",
