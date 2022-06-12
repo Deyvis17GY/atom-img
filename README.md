@@ -21,7 +21,12 @@ import '@deyvis17gy/atom-img/dist/index.css'
 const App = () => {
   return (
     <>
-      <Picture classPicture='picture' alt='image' url='example.jpg' />
+      <Picture
+        classPicture='picture'
+        alt='image'
+        url='example.png'
+        loaderUrl='loaderExample.png'
+      />
     </>
   )
 }
