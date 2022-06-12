@@ -51,7 +51,7 @@ export const Picture = ({
             alt={alt}
           />
         ) : (
-          <article>{children}</article>
+          <article className='a-picture__icon'>{children}</article>
         )}
         {!loaded && url && (
           <div className='a-picture__loaded'>
