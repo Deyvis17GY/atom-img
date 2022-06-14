@@ -10,6 +10,8 @@
 npm install --save @deyvis17gy/atom-img
 ```
 
+Live Demo: [Storybook](https://static-picture-storybook.netlify.app/?path=/story/picture--picture-icon)
+
 ## Usage
 
 ```jsx
