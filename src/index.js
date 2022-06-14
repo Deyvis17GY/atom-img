@@ -5,6 +5,7 @@ import React, {
   useState,
   Fragment
 } from 'react'
+import PropTypes from 'prop-types'
 import './picture.scss'
 
 export const Picture = ({
@@ -13,7 +14,7 @@ export const Picture = ({
   isBorderRadius,
   alt,
   loaderUrl,
-  clickProfile,
+  onClickProfile,
   children
 }) => {
   const [loaded, setLoaded] = useState(false)
@@ -39,7 +40,7 @@ export const Picture = ({
 
   return (
     <>
-      <figure className={classPicture} onClick={() => clickProfile?.()}>
+      <figure className={classPicture} onClick={() => onClickProfile?.()}>
         {url ? (
           <img
             style={styleImg}
@@ -55,10 +56,24 @@ export const Picture = ({
         )}
         {!loaded && url && (
           <div className='a-picture__loaded'>
-            <img src={loaderUrl} alt={alt} />
+            <img className='a-picture__loaded--img' src={loaderUrl} alt={alt} />
           </div>
         )}
       </figure>
     </>
   )
+}
+
+Picture.propTypes = {
+  url: PropTypes.string,
+  classPicture: PropTypes.string,
+  isBorderRadius: PropTypes.bool,
+  alt: PropTypes.string,
+  loaderUrl: PropTypes.string,
+  onClickProfile: PropTypes.func
+}
+
+Picture.defaultProps = {
+  isBorderRadius: false,
+  alt: 'image test'
 }

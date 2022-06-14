@@ -21,7 +21,7 @@
 
     &__loaded {
         background: transparent;
-        width: 100%;
+        width: 80%;
         min-width: 50px;
         position: absolute;
         height: 100%;
@@ -30,6 +30,12 @@
         justify-content: center;
         align-items: center;
         overflow: hidden;
+        padding: 0 20px;
+
+        &--img {
+            object-fit: contain;
+            width: 90%;
+        }
     }
 
     &__icon {
@@ -60,4 +66,9 @@
 
 .hidden {
     height: 0px;
+}
+
+.picture--icon {
+    width: 96px;
+    height: 96px;
 }
