@@ -28,11 +28,13 @@
     "deploy:netlify:storybook": "build-storybook && netlify deploy --dir storybook-static --prod"
   },
   "peerDependencies": {
-    "react": "^16.0.0 || ^17 || ^18",
-    "prop-types": "^15.8.1"
+    "prop-types": "^15.8.1",
+    "react": "^16.0.0 || ^17 || ^18"
   },
   "devDependencies": {
     "@ant-design/icons": "^4.7.0",
+    "@babel/plugin-transform-regenerator": "^7.18.6",
+    "@babel/preset-modules": "^0.1.5",
     "@storybook/addon-actions": "^6.5.8",
     "@storybook/addon-essentials": "^6.5.8",
     "@storybook/addon-interactions": "^6.5.8",
