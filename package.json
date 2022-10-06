@@ -1,6 +1,6 @@
 {
   "name": "@deyvis17gy/atom-img",
-  "version": "1.0.31",
+  "version": "1.0.32",
   "description": "image preloading for slow or large connections",
   "author": "Deyvis17GY",
   "license": "MIT",
