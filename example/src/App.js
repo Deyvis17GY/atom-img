@@ -12,7 +12,7 @@ const App = () => {
     isBorderRadius: false,
     alt: 'image test',
     classPicture: '',
-    loaderUrl: 'https://c.tenor.com/FBeNVFjn-EkAAAAC/ben-redblock-loading.gif'
+    loaderUrl: 'https://pa1.narvii.com/6609/503da208215e257aa228c672c027844d28fea4b7_hq.gif'
   })
   const changeValues = (e) => {
     const { name, value } = e.target
@@ -45,7 +45,7 @@ const App = () => {
             id='loaderUrl'
             placeholder='https://c.tenor.com/FBeNVFjn-EkAAAAC/ben-redblock-loading.gif'
             name='loaderUrl'
-            defaultValue='https://c.tenor.com/FBeNVFjn-EkAAAAC/ben-redblock-loading.gif'
+            defaultValue='https://pa1.narvii.com/6609/503da208215e257aa228c672c027844d28fea4b7_hq.gif'
             onChange={(e) => changeValues(e)}
           />
         </section>

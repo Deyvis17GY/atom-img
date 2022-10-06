@@ -17,7 +17,7 @@ Live Demo: [Storybook](https://static-picture-storybook.netlify.app/?path=/story
 ```jsx
 import React from 'react'
 
-import { Picture } from '@deyvis/atom-img'
+import { Picture } from '@deyvis17gy/atom-img'
 import '@deyvis17gy/atom-img/dist/index.css'
 
 const App = () => {
