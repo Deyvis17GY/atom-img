@@ -1,38 +1,40 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-import { Picture } from '@deyvis17gy/atom-img'
-import '@deyvis17gy/atom-img/dist/index.css'
-import loader from './assets/img/Spinning.gif'
-import './picture.scss'
+import { Picture } from '@deyvis17gy/atom-img';
+import '@deyvis17gy/atom-img/dist/index.css';
+import loader from './assets/img/Spinning.gif';
+import './picture.scss';
 
 const App = () => {
-  const defaultUrl = 'https://picsum.photos/600/400'
+  const defaultUrl = 'https://picsum.photos/600/400';
   const [valuesProps, setValuesProps] = useState({
     url: 'https://fondosmil.com/fondo/29845.jpg',
     isBorderRadius: false,
     alt: 'image test',
     classPicture: '',
-    loaderUrl: 'https://pa1.narvii.com/6609/503da208215e257aa228c672c027844d28fea4b7_hq.gif'
-  })
+    loaderUrl:
+      'https://pa1.narvii.com/6609/503da208215e257aa228c672c027844d28fea4b7_hq.gif',
+  });
   const changeValues = (e) => {
-    const { name, value } = e.target
-    setValuesProps({ ...valuesProps, [name]: value })
-  }
+    const { name, value } = e.target;
+    setValuesProps({ ...valuesProps, [name]: value });
+  };
 
   const changeCheckbox = (e) => {
-    const { name, checked } = e.target
-    setValuesProps({ ...valuesProps, [name]: checked })
-  }
+    const { name, checked } = e.target;
+    setValuesProps({ ...valuesProps, [name]: checked });
+  };
 
-  console.debug('valuesProps', valuesProps)
+  console.debug('valuesProps', valuesProps);
   return (
     <main className='container'>
       <Picture
-        classPicture='picture'
+        className='picture'
         url={valuesProps.url || defaultUrl}
         alt={valuesProps.alt}
         loaderUrl={valuesProps.loaderUrl || loader}
         isBorderRadius={valuesProps.isBorderRadius}
+        onClick={() => console.log('click')}
       />
       <form className='container__form'>
         <section className='container__group'>
@@ -76,7 +78,7 @@ const App = () => {
         </section>
       </form>
     </main>
-  )
-}
+  );
+};
 
-export default App
+export default App;
