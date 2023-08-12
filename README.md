@@ -10,6 +10,10 @@
 npm install --save @deyvis17gy/atom-img
 ```
 
+```bash
+yarn install @deyvis17gy/atom-img
+```
+
 Live Demo: [Storybook](https://static-picture-storybook.netlify.app/?path=/story/picture--picture-icon)
 
 ## Usage
@@ -24,10 +28,13 @@ const App = () => {
   return (
     <>
       <Picture
-        classPicture='picture'
+        className='picture'
         alt='image'
         url='example.png'
         loaderUrl='loaderExample.png'
+        isBorderRadius={true}
+        isLazy={true}
+        onClick={() => console.log('click)}
       />
     </>
   )
