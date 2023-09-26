@@ -26,17 +26,15 @@ import '@deyvis17gy/atom-img/dist/index.css';
 
 const App = () => {
   return (
-    <>
-      <Picture
-        className='picture'
-        alt='image'
-        url='example.png'
-        loaderUrl='loaderExample.png'
-        isBorderRadius={true}
-        isLazy={true}
-        onClick={() => console.log('click')}
-      />
-    </>
+    <Picture
+      className='picture'
+      alt='image'
+      url='example.png'
+      loaderUrl='loaderExample.png'
+      isBorderRadius={true}
+      isLazy={true}
+      onClick={() => console.log('click')}
+    />
   );
 };
 ```
