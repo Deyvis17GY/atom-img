@@ -19,9 +19,9 @@ export const Picture = ({
   const loadImg = useCallback(() => {
     setLoaded(true);
     setClassState(
-      `a-picture__img ${!props.width ? 'a-picture__img--size' : ''}`
+      `a-picture__img ${!props?.width ? 'a-picture__img--size' : ''}`
     );
-  }, []);
+  }, [props]);
 
   const styleImg = {
     borderRadius: isBorderRadius ? '50%' : '',
