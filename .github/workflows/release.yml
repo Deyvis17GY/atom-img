@@ -7,6 +7,14 @@ on:
   pull_request:
     branches:
       - master
+  workflow_dispatch:
+
+env:
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+permissions:
+  contents: read
+
 jobs:
   Telegram_Start:
     runs-on: ubuntu-latest
