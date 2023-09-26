@@ -25,7 +25,6 @@ const App = () => {
     setValuesProps({ ...valuesProps, [name]: checked });
   };
 
-  console.debug('valuesProps', valuesProps);
   return (
     <main className='container'>
       <Picture
@@ -35,7 +34,7 @@ const App = () => {
         loaderUrl={valuesProps.loaderUrl || loader}
         isBorderRadius={valuesProps.isBorderRadius}
         onClick={() => console.log('click')}
-        width={40}
+        width={500}
         height={370}
       />
       <form className='container__form'>
