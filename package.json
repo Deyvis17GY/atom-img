@@ -2,9 +2,15 @@
   "name": "@deyvis17gy/atom-img",
   "version": "1.0.35",
   "description": "image preloading for slow or large connections",
-  "author": "Deyvis17GY",
+  "author": {
+    "email": "deyvisjaime17@gmail.com",
+    "name": "Deyvis Mariños"
+  },
   "license": "MIT",
-  "repository": "https://github.com/Deyvis17GY/atom-img.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Deyvis17GY/atom-img.git"
+  },
   "homepage": "https://deyvis17gy.github.io/atom-img/",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",
