@@ -21,7 +21,7 @@
     "design system"
   ],
   "scripts": {
-    "build": "rimraf --no-glob ./dist && microbundle --jsx React.createElement --tsconfig ./tsconfig.json -f es,cjs --no-compress",
+    "build": "microbundle --jsx React.createElement --tsconfig ./tsconfig.json -f es,cjs --no-compress",
     "start": "microbundle-crl watch --no-compress --no-css-modules --format modern,cjs",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
@@ -35,7 +35,8 @@
     "build:storybook": "build-storybook",
     "deploy:netlify:storybook": "build-storybook && netlify deploy --dir storybook-static --prod",
     "npm:login": "npm login",
-    "publish:npm": "npm publish --access public"
+    "publish:npm": "npm publish --access public",
+    "local:build": "rimraf --no-glob ./dist && microbundle --jsx React.createElement --tsconfig ./tsconfig.json -f es,cjs --no-compress"
   },
   "peerDependencies": {
     "prop-types": "^15.8.1",
