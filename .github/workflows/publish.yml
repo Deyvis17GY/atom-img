@@ -8,6 +8,28 @@ on:
       - master
 
 jobs:
+  Telegram_Start:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: nelonoel/branch-name@v1.0.1
+      - name: send custom message
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            ${{ github.event_name }}
+            Ref                                               Event
+            ${{ github.ref }}     ${{ github.event_name }}
+            Repo Action URL🚀:
+            https://github.com/${{ github.repository }}/actions
+            Using 📉${{ env.BRANCH_NAME }}🌤 branch
+            ======================
+            👨‍💼${{ github.actor }} created commit:
+            📝Commit message: ${{ github.event.commits[0].message }}
+            🔘Starting Deployment Develop
+          format: markdown
   avoid_redundancy:
     runs-on: ubuntu-latest
     steps:
@@ -24,7 +46,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '16'
       - name: Get Yarn cache directory path
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -53,3 +75,46 @@ jobs:
           tag_name: v${{ steps.publish.outputs.version }} # Utiliza la versión publicada en npm
         # Verificar si la compilación fue exitosa antes de continuar
         if: ${{ success() }}
+      - name: send message telegram the job is failed
+        if: ${{ failure()}}
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            ${{ github.event_name }}
+            Ref                                               Event
+            ${{ github.ref }}     ${{ github.event_name }}
+            Repo Action URL🚀:
+            https://github.com/${{ github.repository }}/actions
+            Using 📉${{ env.BRANCH_NAME }}🌤 branch
+            ======================
+            👨‍💼${{ github.actor }} created commit:
+            📝Commit message: ${{ github.event.commits[0].message }}
+            📂See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+            ❌ The job has failed ❌
+          format: markdown
+  Notify_Telegram:
+    needs: [publish]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: nelonoel/branch-name@v1.0.1
+      - name: send custom message
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            ${{ github.event_name }}
+            Ref                                               Event
+            ${{ github.ref }}     ${{ github.event_name }}
+            Repo Action URL🚀:
+            https://github.com/${{ github.repository }}/actions
+            Using 📉${{ env.BRANCH_NAME }}🌤 branch
+            ======================
+            👨‍💼${{ github.actor }} created commit:
+            📝Commit message: ${{ github.event.commits[0].message }}
+            📂See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+            🎉the pipeline was ${{ job.status}} in https://www.npmjs.com/package/@deyvis17gy/atom-img
+          format: markdown
