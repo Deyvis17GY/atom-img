@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 
 import { Picture } from '@deyvis17gy/atom-img';
 import '@deyvis17gy/atom-img/dist/index.css';
@@ -15,17 +15,16 @@ const App = () => {
     loaderUrl:
       'https://pa1.narvii.com/6609/503da208215e257aa228c672c027844d28fea4b7_hq.gif',
   });
-  const changeValues = (e) => {
+  const changeValues = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setValuesProps({ ...valuesProps, [name]: value });
   };
 
-  const changeCheckbox = (e) => {
+  const changeCheckbox = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target;
     setValuesProps({ ...valuesProps, [name]: checked });
   };
 
-  console.debug('valuesProps', valuesProps);
   return (
     <main className='container'>
       <Picture
@@ -35,6 +34,8 @@ const App = () => {
         loaderUrl={valuesProps.loaderUrl || loader}
         isBorderRadius={valuesProps.isBorderRadius}
         onClick={() => console.log('click')}
+        width={500}
+        height={370}
       />
       <form className='container__form'>
         <section className='container__group'>

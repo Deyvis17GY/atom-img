@@ -22,6 +22,8 @@ PictureIcon.args = {
   loaderUrl: 'https://i.gifer.com/ZZ5H.gif',
   isBorderRadius: true,
   className: 'picture--icon',
+  width: 50,
+  height: 50,
 };
 
 export const PictureLarge = Template.bind({});

@@ -1,6 +1,6 @@
 {
   "name": "@deyvis17gy/atom-img",
-  "version": "1.0.33",
+  "version": "1.0.35",
   "description": "image preloading for slow or large connections",
   "author": "Deyvis17GY",
   "license": "MIT",
@@ -34,6 +34,7 @@
     "storybook": "start-storybook -p 6006",
     "build:storybook": "build-storybook",
     "deploy:netlify:storybook": "build-storybook && netlify deploy --dir storybook-static --prod",
+    "npm:login": "npm login",
     "publish:npm": "npm publish --access public"
   },
   "peerDependencies": {

@@ -1,0 +1,41 @@
+name: Publish to npm
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+        if: ${{ success() }}
+
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        if: ${{ success() }}
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          files: 'dist/*' # Agrega aquí los archivos que deseas incluir en el lanzamiento
+          tag_name: v${{ steps.publish.outputs.version }} # Utiliza la versión publicada en npm
+        # Verificar si la compilación fue exitosa antes de continuar
+        if: ${{ success() }}

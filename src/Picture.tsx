@@ -11,14 +11,17 @@ export const Picture = ({
   isLazy = true,
   isBorderRadius = false,
   alt = 'atom picture',
+  ...props
 }: PictureProps) => {
   const [loaded, setLoaded] = useState(false);
   const [classState, setClassState] = useState('hidden');
   const refImg = useRef<HTMLImageElement | null>(null);
   const loadImg = useCallback(() => {
     setLoaded(true);
-    setClassState('a-picture__img');
-  }, []);
+    setClassState(
+      `a-picture__img ${!props?.width ? 'a-picture__img--size' : ''}`
+    );
+  }, [props]);
 
   const styleImg = {
     borderRadius: isBorderRadius ? '50%' : '',
@@ -44,6 +47,7 @@ export const Picture = ({
           className={classState}
           src={url}
           alt={alt}
+          {...props}
         />
       ) : (
         <article className='a-picture__icon'>{children}</article>

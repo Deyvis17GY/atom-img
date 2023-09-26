@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
+import { HTMLProps, ReactNode } from 'react';
 
-export interface PictureProps {
+export interface PictureProps extends HTMLProps<HTMLImageElement> {
   url?: string;
   className?: string;
   isLazy?: boolean;
