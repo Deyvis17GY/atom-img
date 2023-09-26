@@ -8,6 +8,28 @@ on:
     branches:
       - master
   workflow_dispatch:
+    inputs:
+      type:
+        type: choice
+        description: Choose release type
+        options:
+          - auto
+          - patch
+          - minor
+          - major
+        default: auto
+      beta:
+        type: boolean
+        description: Prerelease
+        default: false
+      npm:
+        type: boolean
+        description: NPM release
+        default: true
+      dry:
+        type: boolean
+        description: Dry release
+        default: false
 
 env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
