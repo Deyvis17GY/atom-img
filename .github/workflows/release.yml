@@ -23,11 +23,13 @@ jobs:
 
       - uses: pnpm/action-setup@v4
 
+      # No `registry-url` here on purpose: it writes an .npmrc bound to
+      # NODE_AUTH_TOKEN, which semantic-release then reads instead of writing its
+      # own from NPM_TOKEN, and authentication fails on an unsubstituted placeholder.
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
           cache: pnpm
-          registry-url: https://registry.npmjs.org
 
       - run: pnpm install --frozen-lockfile
 
