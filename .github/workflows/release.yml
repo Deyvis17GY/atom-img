@@ -2,132 +2,36 @@ name: Release
 
 on:
   push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+    branches: [master]
   workflow_dispatch:
-    inputs:
-      type:
-        type: choice
-        description: Choose release type
-        options:
-          - auto
-          - patch
-          - minor
-          - major
-        default: auto
-      beta:
-        type: boolean
-        description: Prerelease
-        default: false
-      npm:
-        type: boolean
-        description: NPM release
-        default: true
-      dry:
-        type: boolean
-        description: Dry release
-        default: false
 
-env:
-  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
+# semantic-release needs to push the version commit, the tag and the release.
 permissions:
-  contents: read
+  contents: write
+  issues: write
+  pull-requests: write
+  id-token: write
 
 jobs:
-  Telegram_Start:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - uses: nelonoel/branch-name@v1.0.1
-      - name: send custom message
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            ${{ github.event_name }}
-            Ref                                               Event
-            ${{ github.ref }}     ${{ github.event_name }}
-            Repo Action URL🚀:
-            https://github.com/${{ github.repository }}/actions
-            Using 📉${{ env.BRANCH_NAME }}🌤 branch
-            ======================
-            👨‍💼${{ github.actor }} created commit:
-            📝Commit message: ${{ github.event.commits[0].message }}
-            🔘Starting Release Master
-          format: markdown
   release:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Read Node.js version to install from `.nvmrc`
-        run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
-        id: nvm
-      - name: Install required Node.js version
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
         with:
-          node-version: '${{ steps.nvm.outputs.NVMRC }}'
-      - name: Get Yarn cache directory path
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: Setup cache key and directory for node_modules cache
-        uses: actions/cache@v2
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
         with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-      - name: Yarn install
-        run: yarn install --force
-      - name: Release
-        if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/next')
-        run: npx semantic-release
+          node-version-file: .nvmrc
+          registry-url: https://registry.npmjs.org
+
+      # Reproducible: package-lock.json is now committed, which it never was.
+      - run: npm ci
+
+      - run: npm test
+
+      - run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: send message telegram the job is failed
-        if: ${{ failure()}}
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            ${{ github.event_name }}
-            Ref                                               Event
-            ${{ github.ref }}     ${{ github.event_name }}
-            Repo Action URL🚀:
-            https://github.com/${{ github.repository }}/actions
-            Using 📉${{ env.BRANCH_NAME }}🌤 branch
-            ======================
-            👨‍💼${{ github.actor }} created commit:
-            📝Commit message: ${{ github.event.commits[0].message }}
-            📂See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-            ❌ The job has failed ❌
-          format: markdown
-  Notify_Telegram:
-    needs: [release]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - uses: nelonoel/branch-name@v1.0.1
-      - name: send custom message
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            ${{ github.event_name }}
-            Ref                                               Event
-            ${{ github.ref }}     ${{ github.event_name }}
-            Repo Action URL🚀:
-            https://github.com/${{ github.repository }}/actions
-            Using 📉${{ env.BRANCH_NAME }}🌤 branch
-            ======================
-            👨‍💼${{ github.actor }} created commit:
-            📝Commit message: ${{ github.event.commits[0].message }}
-            📂See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-            🎉the pipeline was ${{ job.status}} in https://www.npmjs.com/package/@deyvis17gy/atom-img
-          format: markdown
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
