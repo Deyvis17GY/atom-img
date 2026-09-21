@@ -21,17 +21,21 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
+      - uses: pnpm/action-setup@v4
+
+      # No `registry-url` here on purpose: it writes an .npmrc bound to
+      # NODE_AUTH_TOKEN, which semantic-release then reads instead of writing its
+      # own from NPM_TOKEN, and authentication fails on an unsubstituted placeholder.
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-          registry-url: https://registry.npmjs.org
+          cache: pnpm
 
-      # Reproducible: package-lock.json is now committed, which it never was.
-      - run: npm ci
+      - run: pnpm install --frozen-lockfile
 
-      - run: npm test
+      - run: pnpm test
 
-      - run: npx semantic-release
+      - run: pnpm exec semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
