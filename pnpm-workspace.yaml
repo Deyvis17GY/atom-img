@@ -1,0 +1,5 @@
+# pnpm blocks install scripts by default. esbuild downloads its platform binary and
+# @parcel/watcher builds a native addon; tsup, vitest and storybook need both.
+allowBuilds:
+  esbuild: true
+  '@parcel/watcher': true
