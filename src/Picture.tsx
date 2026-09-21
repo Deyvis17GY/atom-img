@@ -1,12 +1,8 @@
-import React, {
-  SyntheticEvent,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { SyntheticEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { PictureProps } from './interfaces/index';
-import './picture.scss';
+
+// The stylesheet ships as dist/index.css, compiled by the `build:css` script and
+// imported by consumers on their own, so it is not pulled into the JS bundle.
 
 export const Picture = ({
   url,
@@ -97,7 +93,9 @@ export const Picture = ({
       )}
       {!loaded && url && (
         <div className='a-picture__loaded'>
-          <img className='a-picture__loaded--img' src={loaderUrl} alt={alt} />
+          {/* Decorative placeholder: repeating `alt` here made screen readers
+              announce the same image twice. */}
+          <img className='a-picture__loaded--img' src={loaderUrl} alt='' />
         </div>
       )}
     </figure>
